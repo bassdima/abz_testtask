@@ -1,0 +1,16 @@
+@import './css-vars.css';
+@import './reset-default-styles.css';
+@import '../components/Header/styles.scss';
+@import '../components/Button/styles.scss';
+@custom-selector :--heading h1, h2;
+@custom-selector :--body-text p, a;
+
+:--heading {
+    font-size: 40px;
+    line-height: 40px;
+}
+
+:--body-text {
+    font-size: 16px;
+    line-height: 26px;
+}

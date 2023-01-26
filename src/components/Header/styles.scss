@@ -1,0 +1,26 @@
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    &-container {
+        width: 1170px;
+        padding: 13px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (--tablet) {
+            padding: 13px 32px;
+        }
+
+        @media (--laptop) {
+            padding: 13px 61px;
+        }
+
+        @media (--4k) {
+            padding: 13px 0px;
+        }
+    }
+}

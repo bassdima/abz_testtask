@@ -1,13 +1,120 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+    --primary-color: #F4E041;
+    --secondary-color: #00BDD3;
+    --background-color: #F8F8F8;
+    --black-color: rgba(0, 0, 0, 0.87);
+    --desable-color: #B4B4B4;
+    --form-color: #D0CFCF;
+    --error-color: #CB3D40;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+ul[class],
+ol[class] {
+    padding: 0;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    font-family: 'Nunito', sans-serif;
+}
+ul[class],
+ol[class] {
+    list-style: none;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+article>*+* {
+    margin-top: 1em;
+}
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.header-container {
+        width: 1170px;
+        padding: 13px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+@media (min-width: 768px) {
+.header-container {
+            padding: 13px 32px
+    }
+        }
+@media (min-width: 1024px) {
+.header-container {
+            padding: 13px 61px
+    }
+        }
+@media (min-width: 2056px) {
+.header-container {
+            padding: 13px 0px
+    }
+        }
+.button {
+    background-color: var(--primary-color);
+    border-radius: 80px;
+    border: none;
+}
+.button a {
+        -webkit-text-decoration: none;
+        text-decoration: none;
+        color: var(--black-color);
+    }
+.users-button {
+    padding: 4px 29px;
+    margin-right: 10px;
+}
+.sign-up-button {
+    padding: 4px 22px 4px 23px;
+}
+@custom-selector :--heading h1, h2;
+@custom-selector :--body-text p, a;
+:is(h1, h2) {
+    font-size: 40px;
+    line-height: 40px;
+}
+:--heading {
+    font-size: 40px;
+    line-height: 40px;
+}
+:is(p, a) {
+    font-size: 16px;
+    line-height: 26px;
+}
+:--body-text {
+    font-size: 16px;
+    line-height: 26px;
 }
