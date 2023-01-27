@@ -1,5 +1,5 @@
-import { ReactComponent as LogoSvg } from '../../assets/Logo.svg';
-import { Button } from '../Button';
+import { ReactComponent as LogoSvg } from '../../images/Logo.svg';
+import { Button } from '../index';
 
 export const Header = () => {
   return (

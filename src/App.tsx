@@ -1,9 +1,12 @@
-import { Header } from './components/Header';
+import { Header, Description } from './components';
 
 export const App = () => {
   return (
-    <div className="App">
-     <Header />
+    <div className='app-wrapper'>
+      <Header />
+      <div className="content-wrapper">
+          <Description />
+      </div>
     </div>
   );
 }

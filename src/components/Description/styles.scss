@@ -1,0 +1,28 @@
+.description-container {
+    padding: 40px 16px 71px;
+    background-image: url('~images/pexels-alexandr-podvalny-1227513.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    color: var(--white-color);
+
+    h1 {
+        margin-bottom: 21px;
+    }
+
+    p {
+        margin-bottom: 32px;
+    }
+
+    @media (--tablet) {
+        padding: 89px 194px 88px;
+    }
+
+    @media (--laptop) {
+        padding: 164px 322px 163px;
+    }
+
+    @media (--4k) {
+        padding: 164px 395px 163px;
+    }
+}

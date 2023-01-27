@@ -1,11 +1,11 @@
 .header {
-    background-color: #FFFFFF;
+    background-color: var(--white-color);
     display: flex;
     justify-content: center;
     width: 100%;
 
     &-container {
-        width: 1170px;
+        width: var(--wrapper-width);
         padding: 13px 16px;
         display: flex;
         align-items: center;
