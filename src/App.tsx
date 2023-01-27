@@ -1,11 +1,12 @@
-import { Header, Description } from './components';
+import { Header, Description, UsersSection } from './components';
 
 export const App = () => {
   return (
     <div className='app-wrapper'>
       <Header />
       <div className="content-wrapper">
-          <Description />
+        <Description />
+        <UsersSection />
       </div>
     </div>
   );
