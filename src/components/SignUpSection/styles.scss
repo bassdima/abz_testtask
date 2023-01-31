@@ -1,0 +1,23 @@
+.sign-up-section {
+    padding: 0px 16px 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        margin-bottom: 50px;
+    }
+
+    @media (--tablet) {
+        padding: 0px 32px 100px;
+    }
+
+    @media (--laptop) {
+        padding: 0px 60px 100px;
+    }
+
+    @media (--4k) {
+        padding: 0px 0px 100px;
+    }
+}

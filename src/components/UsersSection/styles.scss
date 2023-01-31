@@ -1,21 +1,22 @@
 .users-section-wrapper {
-    padding: 140px 16px 0px;
+    padding: 0px 16px 0px;
     text-align: center;
     color: var(--black-color);
+    margin-bottom: 140px;
 
     h2 {
         margin-bottom: 50px;
     }
 
     @media (--tablet) {
-        padding: 140px 32px 0px;
+        padding: 0px 32px 0px;
     }
 
     @media (--laptop) {
-        padding: 140px 60px 0px;
+        padding: 0px 60px 0px;
     }
 
     @media (--4k) {
-        padding: 140px 0px 0px;
+        padding: 0px 0px 0px;
     }
 }

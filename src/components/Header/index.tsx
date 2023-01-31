@@ -8,11 +8,11 @@ export const Header = () => {
         <LogoSvg />
         <nav>
           <Button
-            children={<a href="#">Users</a>}
+            children={<a href="#users-section">Users</a>}
             additionalClass='users-button'
           />
           <Button
-            children={<a href="#">Sign up</a>}
+            children={<a href="#sign-up-section">Sign up</a>}
             additionalClass='sign-up-button'
           />
         </nav>

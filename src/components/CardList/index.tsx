@@ -1,5 +1,4 @@
-import { UserCard } from "../UserCard";
-import data from '../../../data.json';
+import { UserCard } from "../index";
 
 export const CardList = () => {
     return (

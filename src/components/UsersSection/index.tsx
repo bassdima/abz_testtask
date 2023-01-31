@@ -3,7 +3,7 @@ import { CardList, Button } from "../index";
 
 export const UsersSection = () => {
     return (
-        <div className="users-section-wrapper">
+        <div id="users-section" className="users-section-wrapper">
             <h2>{content.TITLE_USERSLIST}</h2>
             <CardList />
             <Button

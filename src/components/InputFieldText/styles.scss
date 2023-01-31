@@ -1,0 +1,54 @@
+.input-container {
+    position: relative;
+
+    &-field {
+        outline: none;
+        border: 1px solid var(--desable-color);
+        background-color: var(--background-color);
+        border-radius: 4px;
+        padding: 16px 16px;
+        color: var(--black-color);
+        transition: 0.1s ease-out;
+        width: 100%;
+    }
+
+    &-field:focus {
+        border-color: var(--secondary-color);
+    }
+
+    &-field:focus+label {
+        color: var(--secondary-color);
+        top: 0;
+        transform: translateY(-50%) scale(.9);
+        display: block;
+    }
+
+    &-field:not(:placeholder-shown)+label {
+        top: 0;
+        transform: translateY(-50%) scale(.9);
+    }
+
+    &-field:-webkit-autofill {
+        -webkit-text-fill-color: var(--black-color);
+        -webkit-box-shadow: 0 0 0 40px var(--background-color) inset !important;
+    }
+
+
+    &-label {
+        position: absolute;
+        font-size: 12px;
+        line-height: 14px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--background-color);
+        color: var(--desable-color);
+        padding: 0 0.3rem;
+        margin: 0 0.5rem;
+        transition: .1s ease-out;
+        transform-origin: left top;
+        pointer-events: none;
+        display: none;
+    }
+
+}

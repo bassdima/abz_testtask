@@ -1,4 +1,4 @@
-import { Header, Description, UsersSection } from './components';
+import { Header, Description, UsersSection, SignUpSection } from './components';
 
 export const App = () => {
   return (
@@ -7,6 +7,7 @@ export const App = () => {
       <div className="content-wrapper">
         <Description />
         <UsersSection />
+        <SignUpSection />
       </div>
     </div>
   );
