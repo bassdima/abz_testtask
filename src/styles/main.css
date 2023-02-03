@@ -10,6 +10,8 @@
 @import '../components/SignUpSection/styles.scss';
 @import '../components/InputFieldText/styles.scss';
 @import '../components/SignUpForm/styles.scss';
+@import '../components/UploadField/styles.scss';
+@import '../components/RadioButtons/styles.scss';
 @custom-selector :--heading h1, h2;
 @custom-selector :--body-text p, a;
 

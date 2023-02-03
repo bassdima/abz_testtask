@@ -1,84 +1,71 @@
-import { InputFieldText, Button } from "../index";
-import { content } from "../../constans";
+import { InputFieldText, Button, UploadField, RadioButtons } from "../index";
+import { content, placeholderText } from "../../constans";
+import { useFormik } from "formik";
+import { SignupSchema } from "../../formValidationRules";
+import { useGetDataForSignUpForm, postSignUpForm } from "../../API_request";
 import { useState } from "react";
-import { ChangeEvent } from "react";
 
 export const SignUpForm = () => {
-    const [file, setFile] = useState<any>();
+    const { positions, loading, error } = useGetDataForSignUpForm();
+    const [postResponse, setPostResponse] = useState(false);
+    const [postLoading, setPostLoading] = useState(true);
+    const [postError, setPostError] = useState(false);
 
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) {
-            setFile(e.target.files[0].name);
-        }
-    };
 
-    const limitCharacters = (item: string, numOfCharacters: number) => {
-        if (item.length > numOfCharacters) {
-            return `${item.substring(0, numOfCharacters)}...`;
+    const formState = useFormik({
+        initialValues: {
+            name: "",
+            email: "",
+            phone: "",
+            position_id: "1",
+            photo: ""
+        },
+        validationSchema: SignupSchema,
+        onSubmit: values => {
+            const formData = new FormData();
+            Object.keys(values).forEach((key) => {
+                formData.append(key, values[key as keyof typeof values])
+            })
+            postSignUpForm(formData, setPostResponse, setPostError, setPostLoading);
         }
-        else {
-            return item;
-        }
-    }
+    })
 
     return (
-        <form className="form-wrapper" action="">
+        <form onSubmit={formState.handleSubmit} className="form-wrapper">
             <div className="form-wrapper-inputs">
-                <InputFieldText
-                    placeholderText="Your name"
-                    type="name"
-                />
-                <InputFieldText
-                    placeholderText="Email"
-                    type="email"
-                />
-                <InputFieldText
-                    placeholderText="Phone"
-                    type="phone"
-                />
+                {Object.keys(placeholderText).map((item) => {
+                    return (
+                        <InputFieldText
+                            key={item}
+                            placeholderText={placeholderText[item as keyof typeof placeholderText]}
+                            type={item}
+                            name={item}
+                            handleChange={formState.handleChange}
+                            formValue={formState.values[item as keyof typeof placeholderText]}
+                            error={formState.errors[item as keyof typeof placeholderText]}
+                        />
+                    );
+                })}
             </div>
             <p className="filling-example">{content.EXAMPLE_PHONE}</p>
             <p className="title-positions">{content.TITLE_POSITIONS}</p>
-            <div className="radio-btn-container">
-                <label className="radio-btn">
-                    <input type="radio" name="radio-btn" defaultChecked />
-                    <span className="checkmark" />
-                    Frontend developer
-                </label>
-                <label className="radio-btn">
-                    <input type="radio" name="radio-btn" />
-                    <span className="checkmark" />
-                    Backend developer
-                </label>
-                <label className="radio-btn">
-                    <input type="radio" name="radio-btn" />
-                    <span className="checkmark" />
-                    Designer
-                </label>
-                <label className="radio-btn">
-                    <input type="radio" name="radio-btn" />
-                    <span className="checkmark" />
-                    QA
-                </label>
-            </div>
-            <div className="file-upload-wrapper">
-                <input
-                    name="file-upload-field"
-                    type="file"
-                    className="file-upload-field"
-                    onChange={handleFileChange}
-                    value="" />
-                <div className="upload-btn">Upload</div>
-                <div
-                    className="file-name"
-                    style={{ color: file ? 'rgba(0, 0, 0, 0.87)' : '#7E7E7E' }}
-                >
-                    {file ? limitCharacters(file, 25) : 'Upload your photo'}
-                </div>
-            </div>
+            <RadioButtons
+                handleChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    formState.setFieldValue('position_id', e.target.dataset.position)
+                }}
+                radioBtnContent={positions}
+            />
+            <UploadField
+                handleChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    formState.setFieldValue('photo', e.target.files?.[0] || null)
+                }}
+                file={formState.values.photo}
+            />
+            {formState.errors && formState.errors.photo}
             <Button
-                children={<a href="#">Sign up</a>}
-                additionalClass='sign-up-button'
+                text='Sign up'
+                additionalClass='sign-up-button-submit'
+                btnType='submit'
             />
         </form>
     );

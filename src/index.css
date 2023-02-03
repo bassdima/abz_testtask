@@ -54,10 +54,6 @@ ul[class],
 ol[class] {
     list-style: none;
 }
-img {
-    max-width: 100%;
-    display: block;
-}
 article>*+* {
     margin-top: 1em;
 }
@@ -114,6 +110,9 @@ select {
 }
 .show-more-button {
     padding: 6px 18px 6px 19px;
+}
+.sign-up-button-submit {
+    padding: 5px 22px 7px 23px;
 }
 .description-container {
     padding: 40px 16px 71px;
@@ -172,6 +171,7 @@ select {
 .card-list-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     margin-bottom: 50px;
 }
@@ -196,11 +196,27 @@ select {
     background-color: var(--white-color);
     border-radius: 10px;
 }
+@media(min-width: 768px) {
+.user-card {
+        max-width: 344px
+}
+    }
+@media(min-width: 1024px) {
+.user-card {
+        max-width: 282px
+}
+    }
+@media(min-width: 2056px) {
+.user-card {
+        max-width: 370px
+}
+    }
 .user-card-avatar {
         width: 70px;
         height: 70px;
         border-radius: 50px;
         margin-bottom: 20px;
+        overflow: clip;
     }
 .user-card-name {
         margin-bottom: 20px;
@@ -302,74 +318,74 @@ select {
         text-align: start;
         margin-bottom: 12px;
     }
-.form-wrapper .radio-btn-container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-size: 16px;
-        line-height: 23px;
-        gap: 13px;
-        margin-bottom: 50px;
+.file-upload-wrapper {
+    position: relative;
+    width: 100%;
+    height: 54px;
+    border: 1px solid var(--form-color);
+    border-radius: 4px;
+    margin-bottom: 50px;
+}
+.file-upload-wrapper .upload-btn {
+        color: var(--black-color);
+        border: 1px solid var(--black-color);
+        border-radius: 4px 0px 0px 4px;
+        position: absolute;
+        top: -0.5px;
+        left: -1px;
+        height: 103%;
+        padding: 14px 14px;
     }
-.form-wrapper .radio-btn-container .radio-btn {
-            min-width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-.form-wrapper .radio-btn-container .radio-btn input {
-                display: none;
-            }
-.form-wrapper .radio-btn-container .radio-btn .checkmark {
-                width: 20px;
-                height: 20px;
-                margin-right: 12px;
-                border-radius: 50%;
-                display: inline-block;
-                transition: opacity 0.3s ease;
-                border: 1px solid var(--form-color);
-            }
-.form-wrapper .radio-btn-container .radio-btn input:checked~.checkmark {
-                background-image:
-                    radial-gradient(circle at center,
-                        var(--secondary-color) 5px,
-                        rgba(255, 255, 255, 0) 0);
-                border-color: var(--secondary-color);
-            }
-.form-wrapper .file-upload-wrapper {
-        position: relative;
+.file-upload-wrapper .file-name {
+        position: absolute;
+        top: 0px;
+        left: 83px;
+        height: 100%;
+        padding: 15px 16px;
+    }
+.file-upload-wrapper .file-upload-field {
         width: 100%;
-        height: 54px;
-        border: 1px solid var(--form-color);
-        border-radius: 4px;
-        margin-bottom: 50px;
+        height: 100%;
+        opacity: 0;
+        z-index: 2;
+        position: relative;
     }
-.form-wrapper .file-upload-wrapper .upload-btn {
-            color: var(--black-color);
-            border: 1px solid var(--black-color);
-            border-radius: 4px 0px 0px 4px;
-            position: absolute;
-            top: -0.5px;
-            left: -1px;
-            height: 103%;
-            padding: 14px 14px;
+.radio-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 16px;
+    line-height: 23px;
+    gap: 13px;
+    margin-bottom: 50px;
+}
+.radio-btn-container .radio-btn {
+        min-width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+.radio-btn-container .radio-btn input {
+            display: none;
         }
-.form-wrapper .file-upload-wrapper .file-name {
-            position: absolute;
-            top: 0px;
-            left: 83px;
-            height: 100%;
-            padding: 15px 16px;
+.radio-btn-container .radio-btn .checkmark {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            transition: opacity 0.3s ease;
+            border: 1px solid var(--form-color);
         }
-.form-wrapper .file-upload-wrapper .file-upload-field {
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            z-index: 2;
-            position: relative;
+.radio-btn-container .radio-btn input:checked~.checkmark {
+            background-image:
+                radial-gradient(circle at center,
+                    var(--secondary-color) 5px,
+                    rgba(255, 255, 255, 0) 0);
+            border-color: var(--secondary-color);
         }
 @custom-selector :--heading h1, h2;
 @custom-selector :--body-text p, a;

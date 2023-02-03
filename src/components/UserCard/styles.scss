@@ -6,11 +6,24 @@
     background-color: var(--white-color);
     border-radius: 10px;
 
+    @media(--tablet) {
+        max-width: 344px;
+    }
+
+    @media(--laptop) {
+        max-width: 282px;
+    }
+
+    @media(--4k) {
+        max-width: 370px;
+    }
+
     &-avatar {
         width: 70px;
         height: 70px;
         border-radius: 50px;
         margin-bottom: 20px;
+        overflow: clip;
     }
 
     &-name {

@@ -7,3 +7,5 @@ export { UserCard } from './UserCard';
 export { SignUpSection } from './SignUpSection';
 export { InputFieldText } from './InputFieldText';
 export { SignUpForm } from './SignUpForm';
+export { UploadField } from './UploadField';
+export { RadioButtons } from './RadioButtons';
