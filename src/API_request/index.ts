@@ -73,11 +73,16 @@ export const useGetUsers = (pageNumber: number) => {
 }
 
 export const postSignUpForm = (
-    formData: FormData,
+    values: { [key: string]: string },
     setIsResponseSuccess: React.Dispatch<React.SetStateAction<boolean>>,
     setPostError: React.Dispatch<React.SetStateAction<boolean>>,
     setPostLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
+
+    const formData = new FormData();
+    Object.keys(values).forEach((key) => {
+        formData.append(key, values[key as keyof typeof values])
+    })
 
     setPostLoading(true);
     setPostError(false);

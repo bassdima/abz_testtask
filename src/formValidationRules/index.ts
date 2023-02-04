@@ -14,18 +14,19 @@ export const SignupSchema = Yup.object().shape({
     name: Yup.string()
         .min(2, "The name must be at least 2 characters.")
         .max(60, "The name must be no more than 60 characters.")
-        .required('Required'),
+        .required("The name field is required."),
 
     email: Yup.string()
         .email("The email must be a valid email address.")
-        .required('Required'),
+        .required("The email field is required."),
 
     phone: Yup.string()
-        .phone("The phone number is invalid.")
-        .phone("UA", true, "Number should start with code of Ukraine +380")
-        .required("The phone field is required."),
+        .required("The phone field is required.")
+        .phone(undefined, undefined, "The phone must be a valid phone number.")
+        .phone("UA", true, "Number should start with code of Ukraine +380"),
 
     photo: Yup.mixed()
+        .required("The file field is required.")
         .test(
             "fileFormat",
             "Image is invalid.",

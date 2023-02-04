@@ -1,13 +1,12 @@
-import { ChangeEventHandler } from "react";
-
 interface InputFieldTextProps {
     additionalClass?: string,
     placeholderText: string,
     type: string,
     name: string
-    handleChange: ChangeEventHandler<HTMLInputElement>,
+    handleChange: React.ChangeEventHandler<HTMLInputElement>,
+    handleBlur: React.FocusEventHandler<HTMLInputElement>,
     formValue: string,
-    error: string | undefined
+    children: JSX.Element | null
 }
 
 export const InputFieldText = ({
@@ -16,8 +15,9 @@ export const InputFieldText = ({
     type,
     name,
     handleChange,
+    handleBlur,
     formValue,
-    error
+    children
 }: InputFieldTextProps) => {
     return (
         <div className="input-container">
@@ -28,10 +28,11 @@ export const InputFieldText = ({
                 placeholder={placeholderText}
                 name={name}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 value={formValue}
             />
             <label htmlFor={type} className="input-container-label">{placeholderText}</label>
-            <div>{error}</div>
+            {children}
         </div>
     );
 }

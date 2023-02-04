@@ -1,32 +1,31 @@
 import { InputFieldText, Button, UploadField, RadioButtons } from "../index";
-import { content, placeholderText } from "../../constans";
+import { CONTENT, placeholderText, formValues } from "../../constans";
 import { useFormik } from "formik";
 import { SignupSchema } from "../../formValidationRules";
 import { useGetDataForSignUpForm, postSignUpForm } from "../../API_request";
 import { useState } from "react";
+import { useStartPreloader } from "../../hooks";
 
-export const SignUpForm = () => {
+type KeyPlaceholder = keyof typeof placeholderText;
+
+interface SignUpFormProps {
+    startPreloader: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const SignUpForm = ({ startPreloader }: SignUpFormProps) => {
     const { positions, loading, error } = useGetDataForSignUpForm();
     const [postResponse, setPostResponse] = useState(false);
     const [postLoading, setPostLoading] = useState(true);
     const [postError, setPostError] = useState(false);
 
+    useStartPreloader(startPreloader, loading);
+    useStartPreloader(startPreloader, postLoading);
 
     const formState = useFormik({
-        initialValues: {
-            name: "",
-            email: "",
-            phone: "",
-            position_id: "1",
-            photo: ""
-        },
+        initialValues: formValues,
         validationSchema: SignupSchema,
         onSubmit: values => {
-            const formData = new FormData();
-            Object.keys(values).forEach((key) => {
-                formData.append(key, values[key as keyof typeof values])
-            })
-            postSignUpForm(formData, setPostResponse, setPostError, setPostLoading);
+            postSignUpForm(values, setPostResponse, setPostError, setPostLoading);
         }
     })
 
@@ -37,18 +36,22 @@ export const SignUpForm = () => {
                     return (
                         <InputFieldText
                             key={item}
-                            placeholderText={placeholderText[item as keyof typeof placeholderText]}
+                            placeholderText={placeholderText[item as KeyPlaceholder]}
                             type={item}
                             name={item}
                             handleChange={formState.handleChange}
-                            formValue={formState.values[item as keyof typeof placeholderText]}
-                            error={formState.errors[item as keyof typeof placeholderText]}
+                            handleBlur={formState.handleBlur}
+                            formValue={formState.values[item as KeyPlaceholder]}
+                            children={
+                                formState.touched[item as KeyPlaceholder] && formState.errors[item as KeyPlaceholder] ?
+                                    <div className="error">{formState.errors[item as KeyPlaceholder]}</div> : null
+                            }
                         />
                     );
                 })}
             </div>
-            <p className="filling-example">{content.EXAMPLE_PHONE}</p>
-            <p className="title-positions">{content.TITLE_POSITIONS}</p>
+            <p className="filling-example">{CONTENT.EXAMPLE_PHONE}</p>
+            <p className="title-positions">{CONTENT.TITLE_POSITIONS}</p>
             <RadioButtons
                 handleChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     formState.setFieldValue('position_id', e.target.dataset.position)
@@ -59,9 +62,13 @@ export const SignUpForm = () => {
                 handleChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     formState.setFieldValue('photo', e.target.files?.[0] || null)
                 }}
+                handleBlur={formState.handleBlur}
                 file={formState.values.photo}
+                children={
+                    formState.touched.photo && formState.errors.photo ?
+                        <div className="error">{formState.errors.photo}</div> : null
+                }
             />
-            {formState.errors && formState.errors.photo}
             <Button
                 text='Sign up'
                 additionalClass='sign-up-button-submit'

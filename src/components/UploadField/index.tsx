@@ -2,10 +2,12 @@ import { limitCharacters } from "../../helpers";
 
 interface UploadFieldProps {
     handleChange: React.ChangeEventHandler<HTMLInputElement>,
-    file?: any,
+    handleBlur?: React.FocusEventHandler<HTMLInputElement>,
+    file: string | File,
+    children: JSX.Element | null
 }
 
-export const UploadField = ({ handleChange, file }: UploadFieldProps) => {
+export const UploadField = ({ handleChange, handleBlur, file, children }: UploadFieldProps) => {
     return (
         <div className="file-upload-wrapper">
             <input
@@ -13,14 +15,16 @@ export const UploadField = ({ handleChange, file }: UploadFieldProps) => {
                 type="file"
                 className="file-upload-field"
                 onChange={handleChange}
+                onBlur={handleBlur}
                 value="" />
             <div className="upload-btn">Upload</div>
             <div
                 className="file-name"
-                style={{ color: file.name ? 'rgba(0, 0, 0, 0.87)' : '#7E7E7E' }}
+                style={{ color: typeof file !== 'string' ? 'rgba(0, 0, 0, 0.87)' : '#7E7E7E' }}
             >
-                {file.name ? limitCharacters(file.name, 25) : 'Upload your photo'}
+                {typeof file !== 'string' ? limitCharacters(file.name, 25) : 'Upload your photo'}
             </div>
+            {children}
         </div>
     );
 }

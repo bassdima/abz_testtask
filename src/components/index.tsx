@@ -9,3 +9,4 @@ export { InputFieldText } from './InputFieldText';
 export { SignUpForm } from './SignUpForm';
 export { UploadField } from './UploadField';
 export { RadioButtons } from './RadioButtons';
+export { ModalWindow } from './ModalWindow';
