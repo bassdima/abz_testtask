@@ -5,6 +5,7 @@
     display: flex;
     background-color: var(--white-color);
     border-radius: 10px;
+    position: relative;
 
     @media(--tablet) {
         max-width: 344px;
@@ -28,5 +29,30 @@
 
     &-name {
         margin-bottom: 20px;
+    }
+
+    .tooltip {
+        display: none;
+        position: absolute;
+        padding: 3px 16px;
+        color: var(--white-color);
+        background-color: var(--black-color);
+        border-radius: 4px;
+        width: 276px;
+        overflow-wrap: break-word;
+        z-index: 1;
+        left: 107px;
+    }
+
+    .tooltip-name {
+        top: 156px;
+    }
+
+    .tooltip-email {
+        top: 230px;
+    }
+
+    .tooltip-parent:hover+.tooltip {
+        display: block;
     }
 }

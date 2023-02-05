@@ -4,10 +4,6 @@
     color: var(--black-color);
     margin-bottom: 140px;
 
-    h2 {
-        margin-bottom: 50px;
-    }
-
     @media (--tablet) {
         padding: 0px 32px 0px;
     }
@@ -19,4 +15,8 @@
     @media (--4k) {
         padding: 0px 0px 0px;
     }
+}
+
+.users-section-title {
+    margin-bottom: 50px;
 }

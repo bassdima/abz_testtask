@@ -1,19 +1,27 @@
 import { ReactComponent as LogoSvg } from '../../images/Logo.svg';
 import { Button } from '../index';
+import { handleClick } from '../../helpers';
 
-export const Header = () => {
+interface HeaderProps {
+  refUsers: React.MutableRefObject<null>
+  refSignUp: React.MutableRefObject<null>
+}
+
+export const Header = ({ refUsers, refSignUp }: HeaderProps) => {
   return (
     <div className="header">
       <div className='header-container'>
         <LogoSvg />
         <nav>
           <Button
-            children={<a href="#users-section">Users</a>}
+            text='Users'
             additionalClass='users-button'
+            onClickHandler={() => handleClick(refUsers)}
           />
           <Button
-            children={<a href="#sign-up-section">Sign up</a>}
+            text="Sign up"
             additionalClass='sign-up-button'
+            onClickHandler={() => handleClick(refSignUp)}
           />
         </nav>
       </div>

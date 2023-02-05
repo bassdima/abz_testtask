@@ -22,7 +22,7 @@ export const SignupSchema = Yup.object().shape({
 
     phone: Yup.string()
         .required("The phone field is required.")
-        .phone(undefined, undefined, "The phone must be a valid phone number.")
+        .phone(undefined, undefined, "The phone number is invalid. Example: +38 (XXX) XXX - XX - XX")
         .phone("UA", true, "Number should start with code of Ukraine +380"),
 
     photo: Yup.mixed()

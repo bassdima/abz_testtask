@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
   Header,
   Description,
@@ -9,15 +9,17 @@ import {
 
 export const App = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const refUsers = useRef(null);
+  const refSignUp = useRef(null);
 
   return (
     <div className='app-wrapper'>
       <ModalWindow isLoading={isLoading} />
-      <Header />
+      <Header refUsers={refUsers} refSignUp={refSignUp}/>
       <div className="content-wrapper">
-        <Description />
-        <UsersSection startPreloader={setIsLoading} />
-        <SignUpSection startPreloader={setIsLoading} />
+        <Description ref={refSignUp}/>
+        <UsersSection ref={refUsers} startPreloader={setIsLoading} />
+        <SignUpSection ref={refSignUp} startPreloader={setIsLoading} />
       </div>
     </div>
   );

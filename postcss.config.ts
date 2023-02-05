@@ -10,6 +10,6 @@ module.exports = {
                 }
             }
         ),
-        // require('cssnano'),
+        require('cssnano'),
     ]
 }

@@ -10,29 +10,44 @@
         color: var(--black-color);
         transition: 0.1s ease-out;
         width: 100%;
+        margin-bottom: 4px;
+        cursor: pointer;
     }
 
-    &-field:focus {
+    &-field-correct:focus {
         border-color: var(--secondary-color);
     }
 
-    &-field:focus+label {
+    &-field-correct:focus+label {
         color: var(--secondary-color);
         top: 0;
         transform: translateY(-50%) scale(.9);
         display: block;
     }
 
-    &-field:not(:placeholder-shown)+label {
+    &-field-correct:not(:placeholder-shown)+label {
         top: 0;
         transform: translateY(-50%) scale(.9);
     }
 
-    &-field:-webkit-autofill {
+    &-field-correct:-webkit-autofill {
         -webkit-text-fill-color: var(--black-color);
         -webkit-box-shadow: 0 0 0 40px var(--background-color) inset !important;
     }
 
+    &-field-error {
+        border: 2px solid var(--error-color);
+        padding: 15px 15px;
+        transition: .1s ease-out;
+    }
+
+    &-field-error+label {
+        color: var(--error-color);
+        display: block;
+        top: 0;
+        transform: translateY(-50%) scale(.9);
+        transition: .1s ease-out;
+    }
 
     &-label {
         position: absolute;
@@ -50,5 +65,4 @@
         pointer-events: none;
         display: none;
     }
-
 }

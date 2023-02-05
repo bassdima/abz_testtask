@@ -9,12 +9,16 @@ export const limitCharacters = (item: string, numOfCharacters: number) => {
     }
 }
 
-export const imageOnError = (event: any, photo: string) => {
-    event.target.src = photo;
+export const imageOnError = (e: React.SyntheticEvent<HTMLImageElement, Event>, photo: string) => {
+    (e.target as HTMLInputElement).src = photo;
 };
 
 export const compare = (a: UsersType, b: UsersType, order: string) => {
     if (order === 'asc') return a.registration_timestamp - b.registration_timestamp;
     if (order === 'desc') return b.registration_timestamp - a.registration_timestamp;
     else return 0;
+}
+
+export const handleClick = (ref: any) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
 }

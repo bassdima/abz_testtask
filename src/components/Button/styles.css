@@ -2,20 +2,30 @@
     background-color: var(--primary-color);
     border-radius: 80px;
     border: none;
+    cursor: pointer;
 
     & a {
         text-decoration: none;
         color: var(--black-color);
     }
+
+    &:hover:enabled {
+        background-color: var(--hover-color);
+    }
+
+    &:disabled {
+        background-color: var(--desable-color);
+        color: var(--white-color);
+    }
 }
 
 .users-button {
-    padding: 4px 29px;
+    padding: 6px 29px;
     margin-right: 10px;
 }
 
 .sign-up-button {
-    padding: 4px 22px 4px 23px;
+    padding: 6px 22px 6px 23px;
 }
 
 .show-more-button {

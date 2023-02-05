@@ -8,8 +8,8 @@
     &-inputs {
         display: flex;
         flex-direction: column;
-        gap: 49px;
-        margin-bottom: 4px;
+        gap: 30px;
+        margin-bottom: 24px;
     }
 
     .filling-example {
@@ -17,11 +17,19 @@
         line-height: 14px;
         text-align: start;
         margin-left: 16px;
-        margin-bottom: 25px;
     }
 
     .title-positions {
         text-align: start;
         margin-bottom: 12px;
+    }
+
+    .error {
+        font-size: 12px;
+        line-height: 14px;
+        color: var(--error-color);
+        text-align: start;
+        margin-left: 16px;
+        height: 14px;
     }
 }

@@ -1,3 +1,5 @@
+import { CONTENT } from "../../constans"
+
 interface InputFieldTextProps {
     additionalClass?: string,
     placeholderText: string,
@@ -6,7 +8,8 @@ interface InputFieldTextProps {
     handleChange: React.ChangeEventHandler<HTMLInputElement>,
     handleBlur: React.FocusEventHandler<HTMLInputElement>,
     formValue: string,
-    children: JSX.Element | null
+    error: string | null | undefined,
+    errorClass: string
 }
 
 export const InputFieldText = ({
@@ -17,14 +20,15 @@ export const InputFieldText = ({
     handleChange,
     handleBlur,
     formValue,
-    children
+    error,
+    errorClass
 }: InputFieldTextProps) => {
     return (
         <div className="input-container">
             <input
                 type={type}
                 id={type}
-                className={`input-container-field ${additionalClass}`}
+                className={`input-container-field ${error ? "input-container-field-error" : "input-container-field-correct"}`}
                 placeholder={placeholderText}
                 name={name}
                 onChange={handleChange}
@@ -32,7 +36,9 @@ export const InputFieldText = ({
                 value={formValue}
             />
             <label htmlFor={type} className="input-container-label">{placeholderText}</label>
-            {children}
+            <div className={name === "phone" && !error ? additionalClass : errorClass}>
+                {name === "phone" && !error ? CONTENT.EXAMPLE_PHONE : error}
+            </div>
         </div>
     );
 }
