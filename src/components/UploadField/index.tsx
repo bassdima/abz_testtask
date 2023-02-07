@@ -18,7 +18,7 @@ export const UploadField = ({ handleChange, handleBlur, file, error, errorClass 
                 onChange={handleChange}
                 onBlur={handleBlur}
             />
-            <div className={`upload-btn ${error ? "upload-btn-error" : "upload-btn-correct"}`}>Upload</div>
+            <label className={`upload-btn ${error ? "upload-btn-error" : "upload-btn-correct"}`}>Upload</label>
             <div
                 className="file-name"
                 style={{ color: typeof file !== 'string' ? 'rgba(0, 0, 0, 0.87)' : '#7E7E7E' }}
