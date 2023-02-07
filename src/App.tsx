@@ -15,11 +15,17 @@ export const App = () => {
   return (
     <div className='app-wrapper'>
       <ModalWindow isLoading={isLoading} />
-      <Header refUsers={refUsers} refSignUp={refSignUp}/>
+      <Header refUsers={refUsers} refSignUp={refSignUp} />
       <div className="content-wrapper">
-        <Description ref={refSignUp}/>
-        <UsersSection ref={refUsers} startPreloader={setIsLoading} />
-        <SignUpSection ref={refSignUp} startPreloader={setIsLoading} />
+        <Description ref={refSignUp} />
+        <UsersSection
+          ref={refUsers}
+          startPreloader={setIsLoading}
+          />
+        <SignUpSection
+          ref={refSignUp}
+          startPreloader={setIsLoading}
+        />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { useState, forwardRef } from "react";
 import { useStartPreloader } from "../../hooks";
 
 interface UsersSectionProps {
-    startPreloader: React.Dispatch<React.SetStateAction<boolean>>,
+    startPreloader: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const UsersSection = forwardRef(({ startPreloader }: UsersSectionProps, ref) => {

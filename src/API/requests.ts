@@ -3,7 +3,7 @@ import { PositionsType, UsersType } from '../models';
 
 const instance = axios.create({
     baseURL: 'https://frontend-test-assignment-api.abz.agency/api/v1',
-    headers: { 'Token': localStorage.getItem('token') && localStorage.getItem('token') }
+    headers: { 'Token': localStorage.getItem('token') ? localStorage.getItem('token') : null }
 });
 
 export const postSignUpForm = (

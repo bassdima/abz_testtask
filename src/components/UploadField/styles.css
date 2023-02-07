@@ -19,16 +19,17 @@
         color: var(--black-color);
         border-radius: 4px 0px 0px 4px;
         position: absolute;
-        top: -1.5px;
+        top: -0.5px;
         left: -1px;
         height: 104%;
         padding: 14px 14px;
 
         &-error {
             border: 2px solid var(--error-color);
-            top: -2.5px;
+            height: 107%;
+            top: -1.5px;
+            border: 2px solid var(--error-color);
             left: -2px;
-            height: 109%;
             padding: 15px 14px;
             transition: 0.1s ease-out;
         }

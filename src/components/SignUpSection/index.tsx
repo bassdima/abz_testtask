@@ -34,8 +34,8 @@ export const SignUpSection = forwardRef(({ startPreloader }: SignUpSectionProps,
                 <h2>{CONTENT.TITLE_SIGNUP}</h2>
                 <SignUpForm
                     startPreloader={startPreloader}
-                    isResponseWithError={setIsResponseWithError}
-                    isResponseSuccess={setIsResponseSuccess}
+                    setIsResponseWithError={setIsResponseWithError}
+                    setIsResponseSuccess={setIsResponseSuccess}
                     userExist={setIsUserAlreadyExist}
                 />
             </div>

@@ -21,7 +21,7 @@ export const useGetUsers = (pageNumber: number) => {
 
     useEffect(() => {
         getUsers(setLoading, setError, setUsers, setHasMore, pageNumber);
-    }, [pageNumber])
+    }, [pageNumber]) 
 
     return { loading, error, users, hasMore }
 }

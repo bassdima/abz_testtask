@@ -17,7 +17,7 @@ export const CardList = ({ isError, usersList }: CardListProps) => {
                 :
                 sort.map((item) =>
                     <UserCard
-                        key={`${item.id}${item.name}`}
+                        key={item.id}
                         avatar={item.photo}
                         userName={item.name}
                         position={item.position}

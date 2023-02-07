@@ -10,15 +10,14 @@ type KeyPlaceholder = keyof typeof placeholderText;
 
 interface SignUpFormProps {
     startPreloader: React.Dispatch<React.SetStateAction<boolean>>,
-    isResponseSuccess: React.Dispatch<React.SetStateAction<boolean>>,
-    isResponseWithError: React.Dispatch<React.SetStateAction<boolean>>,
+    setIsResponseSuccess: React.Dispatch<React.SetStateAction<boolean>>,
+    setIsResponseWithError: React.Dispatch<React.SetStateAction<boolean>>,
     userExist: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const SignUpForm = ({ startPreloader, isResponseSuccess, isResponseWithError, userExist }: SignUpFormProps) => {
+export const SignUpForm = ({ startPreloader, setIsResponseSuccess, setIsResponseWithError, userExist }: SignUpFormProps) => {
     const { positions, loading, error } = useGetDataForSignUpForm();
     const [postLoading, setPostLoading] = useState(true);
-
     useStartPreloader(startPreloader, loading);
     useStartPreloader(startPreloader, postLoading);
 
@@ -30,7 +29,7 @@ export const SignUpForm = ({ startPreloader, isResponseSuccess, isResponseWithEr
             Object.keys(values).forEach((key) => {
                 formData.append(key, values[key as keyof typeof values])
             })
-            postSignUpForm(formData, isResponseSuccess, isResponseWithError, setPostLoading, userExist);
+            postSignUpForm(formData, setIsResponseSuccess, setIsResponseWithError, setPostLoading, userExist);
         }
     })
 
@@ -72,7 +71,7 @@ export const SignUpForm = ({ startPreloader, isResponseSuccess, isResponseWithEr
             }
             <UploadField
                 handleChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    formState.setFieldValue('photo', e.target.files?.[0] || null)
+                    formState.setFieldValue('photo', e.target.files?.[0] || '')
                 }}
                 file={formState.values.photo}
                 error={
@@ -91,3 +90,4 @@ export const SignUpForm = ({ startPreloader, isResponseSuccess, isResponseWithEr
         </form>
     );
 }
+ 
