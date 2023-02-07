@@ -29,7 +29,7 @@ export const SignupSchema = Yup.object().shape({
         .required("The file field is required.")
         .test(
             "fileFormat",
-            "Image is invalid.",
+            "The photo format must be jpeg/jpg type.",
             value => value && SUPPORTED_FORMATS.includes(value.type)
         )
         .test(
